@@ -330,32 +330,37 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
+    @Composable
+    fun ErrorScreen() {
+        Box(contentAlignment = Alignment.Center) {
+            Text(text = "Ошибка загрузки данных")
+        }
+    }
     @Composable
     fun MainPLACEScreen(navController: NavController) {
-//        val placeScreenViewModel: PlaceScreenViewModel = viewModel() // Получаем ViewModel
-//
-//        // Получаем состояние UI
-//        val uiState = placeScreenViewModel.uiState
-//
-//        // Показываем состояние
-//        when (uiState) {
-//            is PlaceScreenState.Loading -> Loading()
-//            is PlaceScreenState.Success -> {
-//                // Передаем данные на экран с местами
-//                PlaceListScreen(
-//                    navController = navController,
-//                    places = (uiState as PlaceScreenState.Success).currentPlaces
-//                )
-//            }
-//        }
-        Loading()
+        val placeScreenViewModel: PlaceScreenViewModel = viewModel() // Получаем ViewModel
+
+        // Получаем состояние UI
+        val uiState = placeScreenViewModel.uiState
+
+        // Показываем состояние
+        when (uiState) {
+            is PlaceScreenState.Loading -> Loading()
+            is PlaceScreenState.Success -> {
+                // Передаем данные на экран с местами
+                PlaceListScreen(
+                    navController = navController,
+                    places = (uiState as PlaceScreenState.Success).currentPlaces
+                )
+            }
+        }
+//        Loading()
     }
 
     //Экран выбора места
     @Composable
-    fun Loading() {
-        Box(contentAlignment = Alignment.Center) {
+    fun Loading(modifier: Modifier = Modifier) {
+        Box(contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize().background(YellowBackground)) {
             CircularProgressIndicator(
                 modifier = Modifier.width(64.dp),
                 color = MaterialTheme.colorScheme.secondary,
