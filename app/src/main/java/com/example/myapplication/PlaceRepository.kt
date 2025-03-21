@@ -11,7 +11,7 @@ class PlaceRepository {
     )
 
     suspend fun getPlaces(): List<Place> {
-        delay(3000)
+        delay(4000)
         return places
     }
 }

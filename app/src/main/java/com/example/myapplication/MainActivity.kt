@@ -340,9 +340,10 @@ class MainActivity : ComponentActivity() {
 
         when (uiState.ScreenState) {
             is PlaceScreenState.Loading -> {Loading()
-                placeScreenViewModel.fetchPlace() }
+                placeScreenViewModel.fetchPlace()
+                 }
             is PlaceScreenState.Success -> PlaceListScreen(
-                navController = navController, places = (uiState as PlaceScreenState.Success).currentPlaces)
+                navController = navController, places = (uiState.ScreenState as PlaceScreenState.Success).currentPlaces)
         }
 //        Loading()
     }

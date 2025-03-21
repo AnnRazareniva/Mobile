@@ -10,6 +10,7 @@ import kotlinx.coroutines.withContext
 
 class AppUIState(
     val ScreenState: PlaceScreenState = PlaceScreenState.Loading
+
 )
 
 class PlaceScreenViewModel: ViewModel() {
