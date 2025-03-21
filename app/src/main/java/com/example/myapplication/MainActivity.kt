@@ -338,18 +338,12 @@ class MainActivity : ComponentActivity() {
     }
     @Composable
     fun MainPLACEScreen(navController: NavController) {
-        val uiState = placeScreenViewModel.uiState
-
-        // Показываем состояние
-        when (uiState) {
+        when (placeScreenViewModel.uiState) {
             is PlaceScreenState.Loading -> Loading()
-            is PlaceScreenState.Success -> {
-                // Передаем данные на экран с местами
-                PlaceListScreen(
-                    navController = navController,
-                    places = (uiState as PlaceScreenState.Success).currentPlaces
-                )
-            }
+            is PlaceScreenState.Success -> PlaceListScreen(
+                navController = navController, places = (placeScreenViewModel.uiState
+                        as PlaceScreenState.Success).currentPlaces
+            )
         }
 //        Loading()
     }
