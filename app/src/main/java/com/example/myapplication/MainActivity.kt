@@ -332,6 +332,7 @@ class MainActivity : ComponentActivity() {
             Text(text = "Ошибка загрузки данных")
         }
     }
+
     @Composable
     fun MainPLACEScreen(navController: NavController) {
 
