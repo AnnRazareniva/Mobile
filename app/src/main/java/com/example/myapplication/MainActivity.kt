@@ -111,16 +111,12 @@ fun MyApp() {
     }
 }
 
-
+private val placeScreenViewModel = PlaceScreenViewModel()
 class MainActivity : ComponentActivity() {
-
-
-    internal val placeScreenViewModel = PlaceScreenViewModel()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        placeScreenViewModel.fetchPlace()
+
         setContent {
             MyApplicationTheme {
                 MyApp()
@@ -338,12 +334,15 @@ class MainActivity : ComponentActivity() {
     }
     @Composable
     fun MainPLACEScreen(navController: NavController) {
-        when (placeScreenViewModel.uiState) {
-            is PlaceScreenState.Loading -> Loading()
+
+
+        val uiState = placeScreenViewModel.uiState.value
+
+        when (uiState.ScreenState) {
+            is PlaceScreenState.Loading -> {Loading()
+                placeScreenViewModel.fetchPlace() }
             is PlaceScreenState.Success -> PlaceListScreen(
-                navController = navController, places = (placeScreenViewModel.uiState
-                        as PlaceScreenState.Success).currentPlaces
-            )
+                navController = navController, places = (uiState as PlaceScreenState.Success).currentPlaces)
         }
 //        Loading()
     }

@@ -8,25 +8,32 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+class AppUIState(
+    val ScreenState: PlaceScreenState = PlaceScreenState.Loading
+)
+
 class PlaceScreenViewModel: ViewModel() {
-    var uiState = mutableStateOf<PlaceScreenState>(PlaceScreenState.Loading)
+    var uiState = mutableStateOf<AppUIState>(AppUIState())
         private set
 
     private val placeRepository = PlaceRepository()
 
     // Метод для получения данных
     fun fetchPlace() {
-        uiState.value = PlaceScreenState.Loading
+        uiState.value = AppUIState()
         viewModelScope.launch {
             val places = placeRepository.getPlaces()
             withContext(Dispatchers.Default) {
-                uiState.value = PlaceScreenState.Success(places)
+                uiState.value = AppUIState(PlaceScreenState.Success(places))
             }
         }
+    }
 
-
+    init {
+        uiState.value = AppUIState()
     }
 }
+
 
 sealed class PlaceScreenState {
     object Loading : PlaceScreenState()  // Состояние загрузки
