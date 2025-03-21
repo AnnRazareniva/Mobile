@@ -6,4 +6,4 @@ data class Place (
     val supportingText: String,
     val supportingText1: String,
     val supportingText2: String
-)
+)//

@@ -1,7 +1,7 @@
 package com.example.myapplication
 
 import kotlinx.coroutines.delay
-
+//
 class PlaceRepository {
     private val places = listOf(
         Place(R.drawable.image3, "Ресторан “Дичь”", "Предлагает блюда из дичи и редких видов мяса в русском стиле.", "Категория • \$\$ • 1,2 км от вас", "Время • 18:00-20:00"),

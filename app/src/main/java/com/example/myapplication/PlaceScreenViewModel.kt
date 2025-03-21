@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
+//
 class AppUIState(
     val ScreenState: PlaceScreenState = PlaceScreenState.Loading
 
