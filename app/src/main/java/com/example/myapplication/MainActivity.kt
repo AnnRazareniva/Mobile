@@ -338,9 +338,6 @@ class MainActivity : ComponentActivity() {
     }
     @Composable
     fun MainPLACEScreen(navController: NavController) {
-        val placeScreenViewModel: PlaceScreenViewModel = viewModel() // Получаем ViewModel
-
-        // Получаем состояние UI
         val uiState = placeScreenViewModel.uiState
 
         // Показываем состояние
